@@ -1,0 +1,47 @@
+apply plugin: 'war'
+apply plugin: 'liberty'
+
+def projectName = 'Project64x'
+group = 'com.semantyca'
+version = '1.0-SNAPSHOT'
+
+description = "MicroProfile Starter example"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+war {
+    archiveName = projectName + '.war'
+}
+
+// configure liberty-gradle-plugin
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.1.2'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'org.eclipse.microprofile:microprofile:3.2'
+    
+    
+}
+
+ext  {
+    liberty.server.var.'default.http.port' = '9080'
+    liberty.server.var.'project.name' = projectName
+    liberty.server.var.'app.context.root' = '/'
+    
+}
+

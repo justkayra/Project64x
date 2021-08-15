@@ -1,0 +1,9 @@
+/.gradle/
+/build/
+/.idea/
+/gradle/wrapper/
+/gradlew.bat
+/settings.gradle
+/gradlew
+/gradle.properties
+/src/main/resources/.gitkeep
