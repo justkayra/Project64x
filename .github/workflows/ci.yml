@@ -22,7 +22,7 @@ jobs:
       - name: Compile the Project
         working-directory: github-actions-java-maven
       - run: ls
-      - mvn --version
+      - run: mvn --version
       - run: mvn package
 
       - name: Copying files to server
