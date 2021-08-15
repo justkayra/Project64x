@@ -24,6 +24,14 @@ public class LocalizationService {
     }
 
     public IPage getLocalizedPage(String pageType, String lang) {
+        Home eng = new Home();
+        eng.setName("Semantyca");
+        eng.setLang(LanguageCode.ENG);
+        eng.setMotto("Semantyca of your business");
+        eng.setSubMotto("This is an inception. All you get is this web site");
+        eng.setMenuHome("Home");
+        eng.setMenuTasks("Tasks");
+        pageTypes.put("home", eng);
          return pageTypes.get(pageType);
     }
 

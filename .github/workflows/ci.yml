@@ -1,16 +1,25 @@
 name: CI of semantyca
-    
-on:
-  workflow_dispatch:
-  
+
+on: [push, pull_request]
+
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  compile:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        java: [ 11 ]
+    name: Java ${{ matrix.java }} compile
     steps:
-    - uses: actions/checkout@v2
-    - run: ./gradlew libertyPackage
-    - run: ./gradlew libertyRun --no-daemon
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-package: jdk
+          java-version: ${{ matrix.java }}
+      - name: Compile the Project
+        working-directory: github-actions-java-maven
+        run: mvn package
 
 

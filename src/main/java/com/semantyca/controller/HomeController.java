@@ -14,8 +14,8 @@ import javax.ws.rs.core.MediaType;
 @Singleton
 public class HomeController {
 
-    @Inject
-    private LocalizationService localizationService;
+
+    private LocalizationService localizationService = new LocalizationService();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
