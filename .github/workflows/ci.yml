@@ -21,7 +21,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Compile the Project
         working-directory: github-actions-java-maven
-      - run: ls      
+      - run: pwd      
       - run: mvn package
 
       - name: Copying files to server
