@@ -1,7 +1,7 @@
 name: CI of semantyca
 
 on:
-  workflow_run:
+  workflow_dispatch:
 
 jobs:
   compile:
