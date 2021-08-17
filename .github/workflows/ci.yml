@@ -3,7 +3,6 @@ name: CI of semantyca
 on:
   workflow_run:
 
-
 jobs:
   compile:
     runs-on: ubuntu-20.04
