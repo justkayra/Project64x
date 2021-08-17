@@ -7,3 +7,4 @@
 /gradlew
 /gradle.properties
 /src/main/resources/.gitkeep
+/target/
