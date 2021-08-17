@@ -19,8 +19,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-package: jdk
-          java-version: ${{ matrix.java }}
-      - name: Compile the Project
+          java-version: ${{ matrix.java }}      
       - run: mvn package
       - run: pwd
-
