@@ -21,6 +21,7 @@ jobs:
           java-version: ${{ matrix.java }}      
       - run: mvn package
       - run: pwd
+      - run: ls
       
       - name: Copying files to server
         uses: appleboy/scp-action@master
