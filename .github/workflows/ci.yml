@@ -1,4 +1,4 @@
-name: CI of semantyca
+name: CI of Project64x
 
 on:
   workflow_dispatch:
