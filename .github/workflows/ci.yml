@@ -32,5 +32,5 @@ jobs:
          key: ${{ secrets.SSH_KEY }}
          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
          rm: true
-         source: "/"
+         source: "target/Project64x-runner.jar"
          target: "${{ secrets.REMOTE_DIR }}"
