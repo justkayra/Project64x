@@ -3,6 +3,10 @@ name: CI of Project64x
 on:
   workflow_dispatch:
 
+  push:
+     branches:
+     - main
+
 jobs:
   compile:
     runs-on: ubuntu-20.04
@@ -18,11 +22,11 @@ jobs:
         with:
           distribution: 'adopt'
           java-package: jdk
-          java-version: ${{ matrix.java }}      
+          java-version: ${{ matrix.java }}
       - run: mvn package
       - run: pwd
       - run: ls
-      
+
       - name: Copying files to server
         uses: appleboy/scp-action@master
         with:
@@ -34,3 +38,14 @@ jobs:
          rm: false
          source: "target/Project64x-runner.jar"
          target: "${{ secrets.REMOTE_DIR }}"
+
+      - name: restart web-server
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: systemctl start project64x.service
+          host: ${{ secrets.REMOTE_HOST }}
+          port: ${{ secrets.REMOTE_PORT }}
+          username: ${{ secrets.REMOTE_USER }}
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          privateKey: ${{ secrets.SSH_KEY}}
+
